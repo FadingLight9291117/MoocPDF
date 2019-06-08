@@ -1,16 +1,18 @@
+"读取mooc本地数据库，提取其中的数据，先存储在CSV文件中，然后再从csv文件中存储到自己的数据库"
+import allpath
 import sqlite3
 import csv
 import os.path as op
 
 
 # 当前程序所在目录
-THIS_PATH = op.dirname(__file__)
+THIS_PATH = allpath.THIS_PATH
 # MOOC数据库目录
-MOOC_DB_PATH = 'C:/Users/Fadin/AppData/Local/Packages/42920yunfanchina.MOOC-_24n3fmj6qqchj/LocalState/ChinaMooc.sqlite'
+MOOC_DB_PATH = allpath.MOOC_DB_PATH
 # 自己存放中间数据的数据库
-MY_DB_PATH = THIS_PATH+'\data.db'
+MY_DB_PATH = allpath.MY_DB_PATH
 # 创建的csv文件的目录
-CSV_PATH = THIS_PATH+'\data.csv'
+CSV_PATH = allpath.CSV_PATH
 
 
 # 从Mooc客户端sqlite数据库中提取所需数据
@@ -58,12 +60,9 @@ def writeMyData(data=None):
             # 事务提交
             conn.commit()
 
-
-# 解除pdf密码
-def rmPasswd(path=None):
-    pass
-
-
-if __name__ == "__main__":
+def operate():
     readMoocDatabase(path=MOOC_DB_PATH)
     writeMyData()
+
+if __name__ == "__main__":
+    operate()

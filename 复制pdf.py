@@ -1,17 +1,18 @@
 "复制pdf：通过数据库读取数据，将mooc目录下的文件复制到自己的目录"
+import allpath
 import os
 import os.path as op
 import shutil
 import sqlite3
 
 # 当前程序所在目录
-THIS_PATH = op.dirname(__file__)
+THIS_PATH = allpath.THIS_PATH
 # 自己存放中间数据的数据库
-MY_DB_PATH = THIS_PATH+'\data.db'
+MY_DB_PATH = allpath.MY_DB_PATH
 # 目标文件夹
-NAME = 'Python网络爬虫与信息提取'
+NAME = allpath.NAME
 # 目标文件夹目录
-DESTINATION_NAME = 'E:\资料\\'+NAME
+DESTINATION_NAME = allpath.DESTINATION_NAME
 
 
 # 复制网络爬虫文件夹
@@ -45,6 +46,7 @@ def copy():
         else:
             shutil.rmtree(DESTINATION_NAME)
             print("删除目录")
+
 
 if __name__ == "__main__":
     copy()
